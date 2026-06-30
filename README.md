@@ -48,8 +48,44 @@ Por fim, O ecossistema é sustentado por um sistema eficiente de gerenciamento d
 ---
 
 # 4. Pesquisa Bibliográfica e Tecnológica
-* **4 artigos científicos** que detalhem uma ou mais de uma das principais tecnologias que viabilizam a existência do produto.
-* **4 artigos científicos** sobre aplicação / uso do produto.
+
+## 4.1. Artigos sobre Tecnologias que Viabilizam o Produto
+
+### Artigo 1 - Feedback Tátil com Gamepads Comerciais
+
+**Título:** A Versatile Tool for Haptic Feedback Design Towards Enhancing User Experience in Virtual Reality Applications
+
+**Autores:** Vasilije Bursać e Dragan Ivetić
+
+**Periódico:** *Applied Sciences* (MDPI) - indexado na Scopus e Web of Science
+
+**Ano:** 2025
+
+**Link:** [https://doi.org/10.3390/app15105419](https://doi.org/10.3390/app15105419)
+
+**Resumo:** O trabalho investiga a integração de feedback tátil (*haptic feedback*) de alta fidelidade em ambientes virtuais imersivos utilizando gamepads comerciais amplamente disponíveis no mercado (como o controle de Xbox), que representam uma alternativa de baixo custo em relação a luvas e coletes táteis especializados. Os autores propõem um *framework* e uma ferramenta visual de edição baseada em curvas de animação paramétricas integradas ao Unity. Essa arquitetura de software permite criar bibliotecas de estímulos táteis orientadas a objetos, simulando de forma precisa a amplitude, a frequência, o ritmo e a atenuação temporal das vibrações com base no tipo de interação que o avatar executa no ambiente virtual.
+
+**Relação com Sistemas Embarcados:** Este artigo aborda diretamente o desafio de controle de atuadores físicos (transdutores táteis). Na engenharia de embarcados, a conversão de curvas de intensidade lógica (de 0.0 a 1.0) em vibração física esbarra nas limitações mecânicas dos motores de Massa Rotativa Excêntrica (ERM) comumente usados no controle do Xbox. Os autores discutem como a inércia física dessas massas (que possuem tamanhos e pesos diferentes nos lados esquerdo e direito) exige tempos de aceleração e desaceleração específicos, demandando estratégias de calibração, mapeamento de intensidade e temporização precisa por parte do firmware/software de controle para evitar a perda de fidelidade sensorial e garantir respostas realistas em tempo real.
+
+---
+
+## 4.2. Artigos sobre Aplicação / Uso do Produto
+
+### Artigo 1 - Teleoperação Veicular com Gamepad Xbox
+
+**Título:** Enhanced Teleoperation for Manual Remote Driving: Extending ADAS Remote Control Towards Full Vehicle Operation
+
+**Autores:** İsa Karaböcek, Ege Özdemir e Batıkan Kavak
+
+**Periódico:** *Engineering Proceedings* (MDPI) - Apresentado no ECSA-12
+
+**Ano:** 2025
+
+**Link:** [https://www.mdpi.com/2673-4591/118/1/40](https://www.mdpi.com/2673-4591/118/1/40)
+
+**Resumo:** Este estudo apresenta o desenvolvimento de uma arquitetura modular de teleoperação de veículos em tempo real, integrando o controle humano direto aos sistemas embarcados de assistência ao motorista (ADAS). Os autores implementaram uma interface de controle baseada em um gamepad sem fio padrão de Xbox, conectado via Bluetooth a uma estação cliente. Os dados de entrada analógicos dos gatilhos (aceleração/frenagem) e direcionais (esterço da direção) são capturados via biblioteca SDL, mapeados instantaneamente em pacotes de comunicação assíncronos e transmitidos por meio de protocolo UDP para o computador embarcado do veículo físico que executa uma pilha de software baseada em ROS (*Robot Operating System*).
+
+**Relação com Sistemas Embarcados:** Este artigo é um caso de estudo sobre como interfaces de consumo podem ser aplicadas em malhas de controle embarcado de missão crítica e tempo real. Ele detalha os requisitos de projeto de sistemas *hardware-in-the-loop*, abordando a mitigação de latência fim-a-fim na comunicação sem fio (por meio da migração de Wi-Fi 4 para Wi-Fi 5 nas antenas do veículo de teste). Além disso, descreve o *design* do algoritmo de chaveamento de estados (*mode-switching*) no processador embarcado para garantir transições suaves, rápidas (100 ms a 200 ms) e seguras entre a automação local do carro e os comandos remotos injetados diretamente na interface física de controle veicular (DriveKit da PolySync) que atua sobre a direção e os pedais do automóvel.
 
 ---
 
