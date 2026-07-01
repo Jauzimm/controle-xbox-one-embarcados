@@ -41,9 +41,103 @@ Por fim, O ecossistema é sustentado por um sistema eficiente de gerenciamento d
 ---
 
 # 3. Proposta de Reprodução com ESP32
-* **Descrição conceitual** de como as funcionalidades poderiam ser implementadas usando a ESP32 e componentes compatíveis com o ecossistema ESP-IDF;
-* **Diagrama conceitual do sistema** (pode ser esquemático ou em diagrama de blocos);
-* **Limitações e desafios esperados**.
+
+## 3.1 Descrição conceitual
+
+A proposta consiste na reprodução das principais funcionalidades do controle do Xbox One utilizando uma **ESP32** como unidade de processamento e o framework **ESP-IDF** para o desenvolvimento do firmware. A comunicação com o computador seria realizada por meio do perfil **Bluetooth HID (Human Interface Device)**, permitindo que o dispositivo seja reconhecido como um gamepad.
+
+Os componentes principais seriam:
+
+| Função | Componente |
+|---------|------------|
+| Processamento | ESP32 |
+| Joysticks | 2x Joystick com 2 eixos e botão |
+| Botões | Botões tácteis (A, B, X, Y, LB, RB, Start, Back, D-Pad e Xbox) |
+| Comunicação | Bluetooth integrado |
+
+O firmware executaria continuamente as seguintes etapas:
+
+1. Leitura dos joysticks e botões;
+2. Filtragem e calibração das entradas;
+3. Geração do relatório HID;
+4. Envio dos comandos via Bluetooth.
+
+---
+
+### Implementação com Hall Effect
+
+Como melhoria em relação aos joysticks convencionais, propõe-se a utilização da tecnologia **Hall Effect**, eliminando o desgaste dos potenciômetros e reduzindo a ocorrência de *stick drift*.
+
+#### Opção 1 – Joystick Hall Effect
+
+Substituição direta dos joysticks convencionais por módulos que já utilizam sensores Hall internamente.
+
+**Vantagens**
+
+- Fácil implementação;
+- Alta precisão;
+- Maior durabilidade;
+- Elimina praticamente o *stick drift*.
+
+**Desvantagens**
+
+- Maior custo;
+- Dependência de módulos específicos.
+
+---
+
+#### Opção 2 – Sensores Hall discretos
+
+Construção do joystick utilizando **Sensores de Efeito Hall Linear** ou **Sensores Hall Analógicos** disponíveis no laboratório, juntamente com pequenos ímãs presos ao eixo do joystick.
+
+**Vantagens**
+
+- Menor custo;
+- Maior flexibilidade;
+- Melhor compreensão do funcionamento da tecnologia.
+
+**Desvantagens**
+
+- Projeto mecânico mais complexo;
+- Necessidade de calibração e posicionamento preciso dos sensores.
+
+---
+## 3.2 Diagrama conceitual
+
+```text
+                 ┌──────────────────────────┐
+                 │          ESP32           │
+                 │      Firmware ESP-IDF    │
+                 └───────────┬──────────────┘
+                             │
+              ┌──────────────┴─┬─────────────────┐
+              ▼                ▼                 ▼              
+         Joystick Esq.       Joystick Dir.      Botões/D-Pad    
+            (ADC)                (ADC)             (GPIO)
+
+                             │
+                             ▼
+                  Processamento dos comandos
+                             │
+                             ▼
+                    Bluetooth HID (BLE)
+                             │
+                             ▼
+                         Computador
+```
+
+---
+
+## 3.3 Limitações e desafios
+
+Os principais desafios da implementação são:
+
+- Configuração do perfil Bluetooth HID na ESP32;
+- Calibração das leituras analógicas dos joysticks;
+- Redução de ruídos nas entradas ADC;
+- Projeto mecânico mais complexo ao utilizar sensores Hall discretos.
+
+Além disso, algumas funcionalidades do controle original não seriam implementadas, como vibração, gatilhos com resposta tátil e conector para headset.
 
 ---
 
