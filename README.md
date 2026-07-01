@@ -91,7 +91,7 @@ O firmware executaria continuamente as seguintes etapas:
 
 ### Implementação com Hall Effect
 
-Como melhoria em relação aos joysticks convencionais, propõe-se a utilização da tecnologia **Hall Effect**, eliminando o desgaste dos potenciômetros e reduzindo a ocorrência de _stick drift_.
+Como melhoria em relação aos joysticks convencionais, propõe-se a utilização da tecnologia **Hall Effect**, eliminando o desgaste dos potenciômetros e reduzindo a ocorrência de *stick drift*.
 
 #### Opção 1 – Joystick Hall Effect
 
@@ -102,7 +102,7 @@ Substituição direta dos joysticks convencionais por módulos que já utilizam 
 - Fácil implementação;
 - Alta precisão;
 - Maior durabilidade;
-- Elimina praticamente o _stick drift_.
+- Elimina praticamente o *stick drift*.
 
 **Desvantagens**
 
@@ -127,7 +127,6 @@ Construção do joystick utilizando **Sensores de Efeito Hall Linear** ou **Sens
 - Necessidade de calibração e posicionamento preciso dos sensores.
 
 ---
-
 ## 3.2 Diagrama conceitual
 
 ```text
