@@ -13,25 +13,29 @@
 
 # 1. Descrição do Produto Selecionado
 
+<img src="assets/Microsoft-Xbox-One-controller.jpg" alt="Xbox One Wireless Controller" width="400">
+
+_Figura 1 – Xbox One Wireless Controller, modelo 1537. Fonte: [Microsoft](https://commons.wikimedia.org/wiki/File:Microsoft-Xbox-One-Console-Set-wKinect.jpg#/media/File:Microsoft-Xbox-One-controller.jpg/2)._
+
 ## 1.1. Funções Principais, Público-Alvo e Contexto de Uso
 
 Este dispositivo foi projetado para usuários do Xbox One, sendo o controle tendo foco em alta performance, entregando baixa latência e um feedback tátil altamente imersivo. Graças a essa alta performance, ele atende a um público-alvo amplo, que vai desde jogadores casuais até atletas profissionais de esportes. Essa versatilidade se reflete também em seu contexto de uso: além de ser peça-chave em consoles Xbox, PCs (Windows) e plataformas móveis, o dispositivo vai além do mundo dos games, podendo ser aplicado em projetos de robótica e desenvolvimento acadêmico.
 
 ## 1.2. Componentes e Sensores Utilizados
 
-Agora sobre componentes e sensores, o controle adota uma arquitetura focada em imersão e durabilidade. O sistema tátil é composto por uma topologia de quatro motores de massa rotativa excêntrica (ERM): dois motores principais integrados ao chassi (esquerdo e direito) para vibrações globais e dinâmicas, e dois micromotores independentes posicionados nos gatilhos esquerdo (LT) e direito (RT) para respostas táteis localizadas na ponta dos dedos. Já o sensoriamento de posição é heterogêneo: os gatilhos (LT/RT) utilizam sensores magnéticos de Efeito Hall (componentes U10 e U11 no PCB), uma tecnologia que elimina o contato mecânico e evita o desgaste por atrito; os joysticks analógicos duplos, por outro lado, utilizam potenciômetros convencionais — um contato condutor deslizando sobre uma trilha resistiva —, o que os torna suscetíveis ao desgaste mecânico e é a causa raiz do conhecido problema de _stick drift_ deste modelo de controle.
+Agora sobre componentes e sensores, o controle adota uma arquitetura focada em imersão e durabilidade. O sistema tátil é composto por uma topologia de quatro motores de massa rotativa excêntrica (ERM): dois motores principais integrados ao chassi (esquerdo e direito) para vibrações globais e dinâmicas, e dois micromotores independentes posicionados nos gatilhos esquerdo (LT) e direito (RT) para respostas táteis localizadas na ponta dos dedos ([iFixit — Teardown](https://www.ifixit.com/Teardown/Xbox+One+Wireless+Controller+Teardown/122645); [Microsoft Learn — Gamepad e vibração](https://learn.microsoft.com/pt-br/windows/uwp/gaming/gamepad-and-vibration)). Já o sensoriamento de posição é heterogêneo: os gatilhos (LT/RT) utilizam sensores magnéticos de Efeito Hall (componentes U10 e U11 no PCB), uma tecnologia que elimina o contato mecânico e evita o desgaste por atrito ([iFixit — Teardown](https://www.ifixit.com/Teardown/Xbox+One+Wireless+Controller+Teardown/122645)); os joysticks analógicos duplos, por outro lado, utilizam potenciômetros convencionais — um contato condutor deslizando sobre uma trilha resistiva —, o que os torna suscetíveis ao desgaste mecânico e é a causa raiz do conhecido problema de _stick drift_ deste modelo de controle.
 
-Para o comando digital, o projeto combina diferentes engenharias de acionamento para otimizar o tato e a vida útil do hardware. Os botões de ação (A, B, X, Y) utilizam membranas para um clique mais macio e confortável, já o direcional (D-Pad) emprega chapa metálicas para garantir respostas rápidas e aquele feedback firme e audível. Complementando o conjunto, os botões de ombro superiores utilizam micro-switches, priorizando a máxima precisão.
+Para o comando digital, o projeto combina diferentes engenharias de acionamento para otimizar o tato e a vida útil do hardware. Os botões de ação (A, B, X, Y) utilizam membranas para um clique mais macio e confortável, já o direcional (D-Pad) emprega chapas metálicas para garantir respostas rápidas e aquele feedback firme e audível. Complementando o conjunto, os botões de ombro superiores utilizam micro-switches, priorizando a máxima precisão ([iFixit — Teardown](https://www.ifixit.com/Teardown/Xbox+One+Wireless+Controller+Teardown/122645)).
 
 Por fim, a interface do sistema é gerenciada por botões de navegação dedicados. O "Botão Xbox", posicionado centralmente, atua como o guia principal para ligar o console e acessar rapidamente o painel de controle, enquanto os botões "Menu" e "View" desempenham funções contextuais, permitindo a interação com interfaces de software, gerenciamento de menus e navegação dinâmica dentro dos jogos.
 
 ## 1.3. Tecnologias de Comunicação e Controle Embarcadas
 
-Na parte inferior abriga uma entrada de 3,5 mm (P2/P3), garantindo conectividade analógica direta para fones de ouvido e headsets.
+Na parte inferior abriga uma entrada de 3,5 mm (P2/P3), garantindo conectividade analógica direta para fones de ouvido e headsets ([Microsoft — Xbox Wireless Controller, product manual](https://cc.cs.1worldsync.com/inlinecontent/mediaserver/all/a4b/8b3/a4b8b3b058101aca23fec338a4e27d33/original.pdf)).
 
-Para jogar sem fios, ele usa uma conexão exclusiva super rápida e, nos modelos mais novos, também conta com Bluetooth. Para o uso cabeado, o sistema emprega uma interface Micro-USB 2.0
+Para jogar sem fios, ele usa uma conexão exclusiva super rápida (Xbox Wireless) e, nos modelos mais novos (a partir do modelo 1708), também conta com Bluetooth ([FCC ID C3K1697](https://fcc.report/FCC-ID/C3K1697); [Windows Central — Xbox Wireless](https://www.windowscentral.com/xbox-wireless)). Para o uso cabeado, o sistema emprega uma interface Micro-USB 2.0.
 
-Por fim, O ecossistema é sustentado por um sistema eficiente de gerenciamento de energia. O hardware consegue estabilizar a alimentação do circuito constantemente em 3.3V. Esse mecanismo assegura que o controle opere com performance máxima e sem oscilações mesmo quando as pilhas estão com carga baixa, otimizando o consumo energético global e estendendo a vida útil da carga.
+Por fim, o ecossistema é sustentado por um sistema eficiente de gerenciamento de energia. O hardware consegue estabilizar a alimentação do circuito constantemente em 3,3V. Esse mecanismo assegura que o controle opere com performance máxima e sem oscilações mesmo quando as pilhas estão com carga baixa, otimizando o consumo energético global e estendendo a vida útil da carga ([iFixit — Teardown](https://www.ifixit.com/Teardown/Xbox+One+Wireless+Controller+Teardown/122645)).
 
 ---
 
@@ -201,6 +205,8 @@ Além disso, algumas funcionalidades do controle original não seriam implementa
 
 **Relação com Sistemas Embarcados:** Diferente do Artigo 1 (focado em _software_ para curvas de animação háptica), este artigo aborda o problema pelo lado do _hardware_ e do firmware: como projetar o circuito de acionamento de um motor vibratório (análogo aos ERM do controle Xbox) e como garantir baixa latência na comunicação sem fio entre o microcontrolador e o atuador. Essa metodologia de caracterização de atuador e de projeto de protocolo de rádio de baixa latência é diretamente aplicável ao replicar o subsistema háptico do controle usando um ESP32 e um motor de vibração controlado via PWM.
 
+---
+
 ### Artigo 3 - Comunicação Sem Fio de Baixo Consumo (Bluetooth Low Energy)
 
 **Título:** Low-Power Wireless for the Internet of Things: Standards and Applications
@@ -213,9 +219,11 @@ Além disso, algumas funcionalidades do controle original não seriam implementa
 
 **Link:** [https://doi.org/10.1109/ACCESS.2018.2879189](https://doi.org/10.1109/ACCESS.2018.2879189)
 
-**Resumo:** O artigo faz um levantamento abrangente das principais tecnologias de comunicação sem fio de baixo consumo usadas em dispositivos IoT, com foco nas camadas Física (PHY) e de Controle de Acesso ao Meio (MAC). Entre as tecnologias analisadas está o Bluetooth Low Energy (BLE), padrão introduzido em 2011 pelo Bluetooth SIG e incorporado aos modelos mais recentes do Xbox One Controller (a partir do modelo 1708) para reduzir o consumo energético em relação ao Bluetooth clássico (BR/EDR). Os autores detalham como o BLE simplifica a camada de enlace ao suportar apenas um tipo de pacote (contra os 17 tipos do BR/EDR), reduz o número de canais de conexão para apenas 3 canais de anúncio (advertisement channels) — o que acelera e economiza energia no estabelecimento da conexão — e utiliza uma máquina de estados de cinco fases (Standby, Advertising, Scanning, Initiating e Connection) para gerenciar quando o rádio deve transmitir, escutar ou entrar em modo de economia de energia. O artigo também compara o consumo de corrente de diferentes SoCs comerciais compatíveis com BLE, mostrando correntes de sono (sleep current) na faixa de 0,9 a 1,9 µA, o que evidencia por que esse protocolo é adequado para periféricos alimentados por pilhas AA ou baterias pequenas, como é o caso do controle de Xbox.\*\*Relação com Sistemas Embarcados:\*\* Diferente do Artigo 1 (focado em _software_ para curvas de animação háptica), este artigo aborda o problema pelo lado do _hardware_ e do firmware: como projetar o circuito de acionamento de um motor vibratório (análogo aos ERM do controle Xbox) e como garantir baixa latência na comunicação sem fio entre o microcontrolador e o atuador. Essa metodologia de caracterização de atuador e de projeto de protocolo de rádio de baixa latência é diretamente aplicável ao replicar o subsistema háptico do controle usando um ESP32 e um motor de vibração controlado via PWM.
+**Resumo:** O artigo faz um levantamento abrangente das principais tecnologias de comunicação sem fio de baixo consumo usadas em dispositivos IoT, com foco nas camadas Física (PHY) e de Controle de Acesso ao Meio (MAC). Entre as tecnologias analisadas está o Bluetooth Low Energy (BLE), padrão introduzido em 2011 pelo Bluetooth SIG e incorporado aos modelos mais recentes do Xbox One Controller (a partir do modelo 1708) para reduzir o consumo energético em relação ao Bluetooth clássico (BR/EDR). Os autores detalham como o BLE simplifica a camada de enlace ao suportar apenas um tipo de pacote (contra os 17 tipos do BR/EDR), reduz o número de canais de conexão para apenas 3 canais de anúncio (advertisement channels) — o que acelera e economiza energia no estabelecimento da conexão — e utiliza uma máquina de estados de cinco fases (Standby, Advertising, Scanning, Initiating e Connection) para gerenciar quando o rádio deve transmitir, escutar ou entrar em modo de economia de energia. O artigo também compara o consumo de corrente de diferentes SoCs comerciais compatíveis com BLE, mostrando correntes de sono (sleep current) na faixa de 0,9 a 1,9 µA, o que evidencia por que esse protocolo é adequado para periféricos alimentados por pilhas AA ou baterias pequenas, como é o caso do controle de Xbox.
 
 **Relação com Sistemas Embarcados:** Este artigo é diretamente relevante para explicar a tecnologia de conectividade sem fio do Xbox One Controller na seção de "Tecnologias Críticas" do relatório. Ele fundamenta, do ponto de vista de engenharia de sistemas embarcados, a escolha do BLE em detrimento do rádio proprietário "Xbox Wireless" em cenários onde o baixo consumo energético é prioridade sobre a latência mínima — um trade-off que pode ser reproduzido na proposta de reprodução com ESP32, já que o ESP32 possui suporte nativo a BLE. O artigo também oferece dados concretos (corrente de transmissão, corrente de pico em recepção, corrente de sono) que podem ser usados para estimar a autonomia de bateria de um protótipo baseado em ESP32 que replique a funcionalidade de conectividade sem fio do controle original.
+
+---
 
 ### Artigo 4 - Gestão de Energia e Protocolos de Baixo Consumo em Dispositivos Embarcados Autônomos
 
@@ -314,8 +322,6 @@ O artigo demonstra a utilização da ESP32 como plataforma para o desenvolviment
 ---
 
 # 5. Comparativo com Produtos Similares
-
-### 5. Comparativo com produtos similares
 
 **Produtos de mercado relacionados ao Xbox One Controller:**
 
