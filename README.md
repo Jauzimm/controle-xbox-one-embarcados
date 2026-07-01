@@ -183,6 +183,46 @@ Além disso, algumas funcionalidades do controle original não seriam implementa
 
 ---
 
+### Artigo 2 – Desenvolvimento de Joysticks com Sensores Hall Effect
+
+**Título:** *Joystick and Lever Design With Hall-Effect Sensors (Rev. A)*
+
+**Autores:** Patrick Simmons e Scott Bryson
+
+**Publicação:** Texas Instruments – Application Report (SLYU064A)
+
+**Ano:** 2023 (Revisão A)
+
+**Link:** https://www.ti.com/lit/an/slyu064a/slyu064a.pdf
+
+**Resumo:**  
+O documento apresenta diretrizes para o desenvolvimento de joysticks utilizando sensores de efeito Hall, abordando o funcionamento da tecnologia, o posicionamento de ímãs e sensores, técnicas de calibração, processamento dos sinais e análise das principais fontes de erro. Também são apresentados exemplos de implementação para aplicações em controles de jogos, realidade virtual e sistemas automotivos, destacando as vantagens da tecnologia Hall Effect em relação aos potenciômetros convencionais.
+
+**Relação com Sistemas Embarcados:**  
+O documento serve como base para a implementação de joysticks utilizando sensores Hall em sistemas embarcados. Os conceitos apresentados podem ser aplicados na leitura dos sensores pela ESP32 por meio dos conversores ADC, permitindo o desenvolvimento de um controle mais preciso e durável. Além disso, as técnicas de calibração e tratamento dos sinais contribuem para reduzir erros de medição e eliminar problemas como o *stick drift*, tornando a solução mais confiável para aplicações embarcadas.
+
+---
+
+### Artigo 3 – Desenvolvimento de Dispositivos Bluetooth com ESP32
+
+**Título:** *Practical Challenges and Pitfalls of Bluetooth Mesh Data Collection Experiments With ESP32 Microcontrollers*
+
+**Autores:** Marcelo Paulon J. V., Bruno José Olivieri de Souza, Thiago de Souza Lamenza e Markus Endler
+
+**Periódico:** arXiv (pré-publicação científica)
+
+**Ano:** 2022
+
+**Link:** https://arxiv.org/abs/2211.10696
+
+**Resumo:**  
+O artigo apresenta o desenvolvimento e a avaliação de uma infraestrutura de comunicação utilizando **Bluetooth Mesh** com microcontroladores ESP32. Os autores implementam uma rede composta por diversos dispositivos embarcados para coleta de dados, analisando aspectos como confiabilidade da comunicação, perda de pacotes, latência, consumo de energia e limitações práticas encontradas durante a implementação. Além dos experimentos em ambiente real, o trabalho compara os resultados obtidos com simulações, identificando desafios e propondo boas práticas para o desenvolvimento de dispositivos Bluetooth baseados na ESP32.
+
+**Relação com Sistemas Embarcados:**  
+O artigo demonstra a utilização da ESP32 como plataforma para o desenvolvimento de dispositivos embarcados com comunicação Bluetooth, explorando a integração entre hardware, firmware e protocolos de comunicação. Embora o foco seja Bluetooth Mesh, os conceitos de configuração da pilha Bluetooth, gerenciamento da comunicação sem fio, processamento local e otimização do consumo de energia são diretamente aplicáveis ao desenvolvimento de um controle Bluetooth baseado em ESP32. Essas contribuições servem como referência para a implementação da comunicação sem fio do controle utilizando o framework ESP-IDF.
+
+---
+
 # 5. Comparativo com Produtos Similares
 * **Listagem de pelo menos 5 produtos de mercado relacionados** (mesma categoria), sejam da mesma geração (época) ou de gerações diferentes na história do produto.
 * **Tabela comparativa** das principais especificações e características de cada um dos produtos relacionados com o produto sendo estudado.
