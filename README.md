@@ -215,17 +215,23 @@ Além disso, algumas funcionalidades do controle original não seriam implementa
 
 **Resumo:** O artigo faz um levantamento abrangente das principais tecnologias de comunicação sem fio de baixo consumo usadas em dispositivos IoT, com foco nas camadas Física (PHY) e de Controle de Acesso ao Meio (MAC). Entre as tecnologias analisadas está o Bluetooth Low Energy (BLE), padrão introduzido em 2011 pelo Bluetooth SIG e incorporado aos modelos mais recentes do Xbox One Controller (a partir do modelo 1708) para reduzir o consumo energético em relação ao Bluetooth clássico (BR/EDR). Os autores detalham como o BLE simplifica a camada de enlace ao suportar apenas um tipo de pacote (contra os 17 tipos do BR/EDR), reduz o número de canais de conexão para apenas 3 canais de anúncio (advertisement channels) — o que acelera e economiza energia no estabelecimento da conexão — e utiliza uma máquina de estados de cinco fases (Standby, Advertising, Scanning, Initiating e Connection) para gerenciar quando o rádio deve transmitir, escutar ou entrar em modo de economia de energia. O artigo também compara o consumo de corrente de diferentes SoCs comerciais compatíveis com BLE, mostrando correntes de sono (sleep current) na faixa de 0,9 a 1,9 µA, o que evidencia por que esse protocolo é adequado para periféricos alimentados por pilhas AA ou baterias pequenas, como é o caso do controle de Xbox.\*\*Relação com Sistemas Embarcados:\*\* Diferente do Artigo 1 (focado em _software_ para curvas de animação háptica), este artigo aborda o problema pelo lado do _hardware_ e do firmware: como projetar o circuito de acionamento de um motor vibratório (análogo aos ERM do controle Xbox) e como garantir baixa latência na comunicação sem fio entre o microcontrolador e o atuador. Essa metodologia de caracterização de atuador e de projeto de protocolo de rádio de baixa latência é diretamente aplicável ao replicar o subsistema háptico do controle usando um ESP32 e um motor de vibração controlado via PWM.
 
-**Relação** com Sistemas Embarcados: Este artigo é diretamente relevante para explicar a tecnologia de conectividade sem fio do Xbox One Controller na seção de "Tecnologias Críticas" do relatório. Ele fundamenta, do ponto de vista de engenharia de sistemas embarcados, a escolha do BLE em detrimento do rádio proprietário "Xbox Wireless" em cenários onde o baixo consumo energético é prioridade sobre a latência mínima — um trade-off que pode ser reproduzido na proposta de reprodução com ESP32, já que o ESP32 possui suporte nativo a BLE. O artigo também oferece dados concretos (corrente de transmissão, corrente de pico em recepção, corrente de sono) que podem ser usados para estimar a autonomia de bateria de um protótipo baseado em ESP32 que replique a funcionalidade de conectividade sem fio do controle original.
+**Relação com Sistemas Embarcados:** Este artigo é diretamente relevante para explicar a tecnologia de conectividade sem fio do Xbox One Controller na seção de "Tecnologias Críticas" do relatório. Ele fundamenta, do ponto de vista de engenharia de sistemas embarcados, a escolha do BLE em detrimento do rádio proprietário "Xbox Wireless" em cenários onde o baixo consumo energético é prioridade sobre a latência mínima — um trade-off que pode ser reproduzido na proposta de reprodução com ESP32, já que o ESP32 possui suporte nativo a BLE. O artigo também oferece dados concretos (corrente de transmissão, corrente de pico em recepção, corrente de sono) que podem ser usados para estimar a autonomia de bateria de um protótipo baseado em ESP32 que replique a funcionalidade de conectividade sem fio do controle original.
 
 ### Artigo 4 - Gestão de Energia e Protocolos de Baixo Consumo em Dispositivos Embarcados Autônomos
 
 **Título:** Efficient Integration of Ultra-low Power Techniques and Energy Harvesting in Self-Sufficient Devices: A Comprehensive Overview of Current Progress and Future Directions
+
 **Autores:** Rocco Citroni, Fabio Mangini e Fabrizio Frezza
-Periódico: Sensors (MDPI) - indexado na Scopus e Web of Science
+
+**Periódico:** Sensors (MDPI) - indexado na Scopus e Web of Science
+
 **Ano:** 2024
+
 **Link:** [https://doi.org/10.3390/s24144471](https://doi.org/10.3390/s24144471)
+
 **Resumo:** Este artigo de revisão apresenta um panorama abrangente das técnicas de projeto de ultra-baixo consumo (ULPDT) e das estratégias de gerenciamento de energia usadas em nós sensores e dispositivos embarcados autônomos. Os autores detalham os três estados operacionais típicos de um dispositivo alimentado por bateria — sleep, wake-up e active — e demonstram, com base em dados de nós sensores comerciais, que o consumo durante o modo de comunicação sem fio (recepção/transmissão de rádio) supera em ordens de grandeza o consumo em modo de repouso, o que justifica tecnicamente por que os fabricantes priorizam ciclos de trabalho curtos (duty cycling) nesse subsistema. O artigo também descreve, em nível de circuito, as fontes de dissipação de potência em CMOS (dinâmica, curto-circuito e estática/leakage) e cataloga técnicas de mitigação como clock gating, power gating, escalonamento de tensão e voltage/frequency scaling. Na seção de protocolos, os autores comparam formalmente o Bluetooth Clássico (BR/EDR) com o Bluetooth Low Energy, mostrando que a corrente de pico do BLE (<15 mA) é metade da do Bluetooth Clássico (<30 mA), com igual alcance mas latência drasticamente menor — dado tecnicamente relevante para justificar a migração do Xbox One Controller do rádio proprietário 2,4 GHz para o BLE nos modelos mais recentes. Por fim, o trabalho compara opções de armazenamento de energia (pilhas primárias, baterias recarregáveis, supercapacitores), incluindo uma tabela detalhada de parâmetros elétricos de baterias comerciais como NiMH e Li-Ion — tecnologias equivalentes às usadas nos kits de recarga opcionais do Xbox.
-Relação com Sistemas Embarcados: O artigo fornece o embasamento teórico de engenharia de sistemas embarcados para explicar duas decisões de projeto centrais do Xbox One Controller: (1) a escolha por pilhas AA substituíveis em vez de bateria interna, o que se conecta diretamente à discussão do artigo sobre non-rechargeable vs. rechargeable batteries e às vantagens de custo/manutenção das pilhas primárias para dispositivos de baixo consumo médio (<50 µW); e (2) a arquitetura de gerenciamento de energia baseada em estados sleep/wake-up/active, que é exatamente o modelo que precisa ser replicado no firmware do ESP32 na proposta de reprodução do trabalho, usando os modos de baixo consumo nativos do chip (light sleep, deep sleep) para maximizar a autonomia de bateria do protótipo.
+
+**Relação com Sistemas Embarcados:** O artigo fornece o embasamento teórico de engenharia de sistemas embarcados para explicar duas decisões de projeto centrais do Xbox One Controller: (1) a escolha por pilhas AA substituíveis em vez de bateria interna, o que se conecta diretamente à discussão do artigo sobre non-rechargeable vs. rechargeable batteries e às vantagens de custo/manutenção das pilhas primárias para dispositivos de baixo consumo médio (<50 µW); e (2) a arquitetura de gerenciamento de energia baseada em estados sleep/wake-up/active, que é exatamente o modelo que precisa ser replicado no firmware do ESP32 na proposta de reprodução do trabalho, usando os modos de baixo consumo nativos do chip (light sleep, deep sleep) para maximizar a autonomia de bateria do protótipo.
 
 ---
 
@@ -309,8 +315,26 @@ O artigo demonstra a utilização da ESP32 como plataforma para o desenvolviment
 
 # 5. Comparativo com Produtos Similares
 
-- **Listagem de pelo menos 5 produtos de mercado relacionados** (mesma categoria), sejam da mesma geração (época) ou de gerações diferentes na história do produto.
-- **Tabela comparativa** das principais especificações e características de cada um dos produtos relacionados com o produto sendo estudado.
+### 5. Comparativo com produtos similares
+
+**Produtos de mercado relacionados ao Xbox One Controller:**
+
+1. Xbox 360 Controller (Microsoft, 2005) — geração anterior
+2. Xbox Series X|S Controller (Microsoft, 2020) — geração seguinte
+3. Sony DualShock 4 (PS4, 2013) — concorrente direto/mesma geração
+4. Sony DualSense (PS5, 2020) — concorrente de geração seguinte
+5. Nintendo Switch Pro Controller (Nintendo, 2017) — concorrente de geração intermediária
+
+**Tabela comparativa:**
+
+| Produto                                      | Ano / Geração     | Fabricante | Conectividade                                            | Sensores de movimento                           | Touchpad                             | Energia                                                           | Particularidades                                                                                                            |
+| -------------------------------------------- | ----------------- | ---------- | -------------------------------------------------------- | ----------------------------------------------- | ------------------------------------ | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Xbox One Controller** _(objeto de estudo)_ | 2013 (8ª geração) | Microsoft  | Xbox Wireless 2,4 GHz; Bluetooth a partir do modelo 1708 | Não possui                                      | Não                                  | 2x pilhas AA ou bateria recarregável opcional (Play & Charge Kit) | Gatilhos analógicos com motores de vibração independentes; layout herdado do Xbox 360 com refinamentos ergonômicos          |
+| Xbox 360 Controller                          | 2005 (7ª geração) | Microsoft  | Rádio proprietário 2,4 GHz (sem Bluetooth nativo)        | Não possui                                      | Não                                  | 2x pilhas AA ou battery pack NiMH (até ~40 h com kit aprimorado)  | Antecessor direto do Xbox One Controller; base do layout de botões mantido até hoje                                         |
+| Xbox Series X\|S Controller                  | 2020 (9ª geração) | Microsoft  | Xbox Wireless + Bluetooth Low Energy                     | Não possui                                      | Não                                  | 2x pilhas AA (≈30–40 h)                                           | Conector USB-C, suporte a Bluetooth Low Energy e Dynamic Latency Input (reduz latência sincronizando com a taxa de quadros) |
+| Sony DualShock 4 (PS4)                       | 2013 (8ª geração) | Sony       | Bluetooth 2.1+EDR                                        | Sim — giroscópio e acelerômetro de 3 eixos cada | Sim — capacitivo, 2 pontos, clicável | Bateria interna de íon-lítio, 3,7 V / 1000 mAh                    | Barra de luz com três LEDs e alto-falante mono integrado; contemporâneo direto do Xbox One Controller                       |
+| Sony DualSense (PS5)                         | 2020 (9ª geração) | Sony       | Bluetooth                                                | Sim — giroscópio e acelerômetro                 | Sim                                  | Bateria interna de íon-lítio, 3,65 V / 1560 mAh                   | Gatilhos adaptativos com motores rotativos DC, feedback háptico por atuadores de bobina e microfone integrado               |
+| Nintendo Switch Pro Controller               | 2017 (8ª geração) | Nintendo   | Bluetooth 3.0                                            | Sim — acelerômetro e giroscópio                 | Não                                  | Bateria interna de íon-lítio, ≈1300 mAh (≈40 h de uso)            | Leitor NFC para Amiibo e tecnologia HD Rumble para feedback vibratório mais granular                                        |
 
 ---
 
@@ -331,3 +355,13 @@ MICROSOFT. **Xbox Wireless Controller**: product manual. [S. l.]: 1WorldSync. Di
 WIKIPEDIA. **Xbox Wireless Controller**. [S. l.], 2026. Disponível em: [https://en.wikipedia.org/wiki/Xbox_Wireless_Controller](https://en.wikipedia.org/wiki/Xbox_Wireless_Controller). Acesso em: 30 jun. 2026.
 
 WINDOWS CENTRAL. **Xbox Wireless: Everything you need to know**. [S. l.]: Windows Central, 2026. Disponível em: [https://www.windowscentral.com/xbox-wireless](https://www.windowscentral.com/xbox-wireless). Acesso em: 30 jun. 2026.
+
+MICROSOFT. **Xbox 360 Wireless Controller for Windows — Technical Data Sheet**. Redmond: Microsoft Corporation. Disponível em: [ https://download.microsoft.com/download/7/C/A/7CA6D7FD-9758-4DA8-BD27-4FDAB0C18E1F/TDS_XBox360WirelessControllerforWindows.pdf](https://download.microsoft.com/download/7/C/A/7CA6D7FD-9758-4DA8-BD27-4FDAB0C18E1F/TDS_XBox360WirelessControllerforWindows.pdf). Acesso em: 30 jun. 2026.
+
+SONY INTERACTIVE ENTERTAINMENT. **PS4 Tech Specs**. San Mateo: Sony Interactive Entertainment LLC. Disponível em: [https://www.playstation.com/en-us/ps4/tech-specs/](https://www.playstation.com/en-us/ps4/tech-specs/). Acesso em: 30 jun. 2026.
+
+NINTENDO. **Pro Controller — Hardware Accessories**. Redmond: Nintendo of America Inc. Disponível em: [ https://www.nintendo.com/my/hardware/switch/accessories/procon.html](https://www.nintendo.com/my/hardware/switch/accessories/procon.html). Acesso em: 30 jun. 2026.
+
+TESCHLER, Lee. **Teardown: Playstation 5 DualSense controller**. Microcontroller Tips, WTWH Media LLC, 16 abr. 2021. Disponível em: [https://www.microcontrollertips.com/tear-down-playstation-5-dualsense-controller-faq/](https://www.microcontrollertips.com/tear-down-playstation-5-dualsense-controller-faq/). Acesso em: 30 jun. 2026.
+
+PSU.COM. **DualSense Wireless Controller Specifications – Guide**. PlayStation Universe. Disponível em: [https://www.psu.com/news/dualsense-wireless-controller-specifications-guide/](https://www.psu.com/news/dualsense-wireless-controller-specifications-guide/). Acesso em: 30 jun. 2026.
